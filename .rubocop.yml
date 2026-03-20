@@ -1,0 +1,82 @@
+plugins:
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.2
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - "vendor/**/*"
+    - "pkg/**/*"
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "*.gemspec"
+
+RSpec/MultipleExpectations:
+  Max: 6
+
+RSpec/ExampleLength:
+  Max: 20
+
+RSpec/ContextWording:
+  Prefixes:
+    - when
+    - with
+    - without
+    - for
+
+RSpec/DescribeClass:
+  Exclude:
+    - "spec/integration/**/*"
+    - "spec/adversarial/**/*"
+    - "spec/wild_hook_ops/version_spec.rb"
+
+RSpec/SpecFilePathFormat:
+  Exclude:
+    - "spec/wild_hook_ops/version_spec.rb"
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 12
+
+Style/OneClassPerFile:
+  Exclude:
+    - "spec/support/**/*"
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - "spec/support/**/*"
+
+Metrics/AbcSize:
+  Max: 25
+  Exclude:
+    - "spec/support/**/*"
+
+Metrics/ParameterLists:
+  MaxOptionalParameters: 8
+  Exclude:
+    - "lib/wild_hook_ops/models/hook_definition.rb"
+    - "lib/wild_hook_ops/models/hook_handler.rb"
+    - "lib/wild_hook_ops/models/hook_result.rb"
+    - "lib/wild_hook_ops/models/hook_event.rb"
+    - "lib/wild_hook_ops/registry/hook_registry.rb"
+
+Metrics/ModuleLength:
+  Exclude:
+    - "spec/support/**/*"
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Metrics/ClassLength:
+  Max: 150
+  Exclude:
+    - "spec/support/**/*"
