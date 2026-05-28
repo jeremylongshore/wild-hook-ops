@@ -10,6 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working in this
 - **Ecosystem**: wild
 - **Ecosystem root**: `../CLAUDE.md`
 - **Archetype**: C — SDLC Companion
+- **Status**: v1 complete — all 10 epics implemented, 247 tests passing, 0 RuboCop offenses
 - **Mission**: Centralized hook lifecycle management — registration, execution, auditing, and health monitoring for agent workflow extension points
 
 ## What This Repo Does

@@ -1,6 +1,6 @@
 # Epics — wild-hook-ops
 
-See `000-docs/002-epic-plan.md` for the full epic breakdown with child tasks.
+See `000-docs/002-PP-PLAN-epic-plan.md` for the full epic breakdown with child tasks.
 
 ## Status Summary
 
