@@ -23,8 +23,10 @@ name: 'MiniMax Code Review'
 # SHA-pinned per supply-chain policy: it adds per-reviewer sticky comments
 # (upstream's fixed marker makes two lanes clobber each other), reasoning-model
 # <think>-stripping (M3), and the opt-in PR-description context the adversarial
-# lane requires. The action fetches the PR diff through the API and never checks
-# out or executes pull-request code.
+# lane requires. Neither job runs actions/checkout, so nothing in this workflow
+# places pull-request code on the runner; what the action does with the diff it
+# retrieves is the fork's behaviour, reviewed at the pinned SHA, not something
+# this file can demonstrate.
 #
 # SAFE-FOR-FORKS design: runs on `pull_request` (NOT pull_request_target), so a
 # forked pull request never receives the MINIMAX_API_KEY secret. The same-repo
@@ -112,9 +114,9 @@ jobs:
             enabled? handlers sorted by priority ascending; dropping the filter
             runs a handler an operator quarantined, and dropping or reversing the
             sort runs a validation step after the thing it validates. Both are
-            silent. (4) Audit leakage: Audit::Logger#summarise_context inspects
-            every key and value of the caller''s context into
-            HookEvent#context_summary, plus the raw error message; the only
+            silent. (4) Audit leakage: Audit::Logger#summarise_context
+            interpolates every key and inspects every value of the caller''s
+            context into HookEvent#context_summary, plus the raw error message; the only
             containment is CONTEXT_SUMMARY_MAX_LENGTH truncation and the
             documented rule that callers must not put credentials in context.
             Treat any widening as a leak (removing truncation, adding a
@@ -150,8 +152,10 @@ jobs:
             distinguish from "no handlers"; exceeding max_handlers_per_hook must
             raise HandlerLimitExceededError rather than drop the handler
             silently; a duplicate definition must raise rather than overwrite; an
-            invalid callable, priority, timeout, or config value must raise at
-            registration or at the setter; a frozen Configuration must raise.
+            invalid callable, priority, or timeout must raise inside the
+            HookHandler constructor at registration time, since none of the three
+            has a setter, and an invalid config value must raise at the
+            Configuration setter; a frozen Configuration must raise.
             Turning any of those raises into nil, false, or an empty array is a
             top-severity finding. Behavior changes must keep
             000-docs/006-TQ-STND-safety-model.md and the AD records in
