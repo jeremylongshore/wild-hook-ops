@@ -10,6 +10,8 @@ Provides registration, priority-ordered execution with timeouts and error isolat
 
 ---
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/U5S225PTME)
+
 ## What It Solves
 
 The wild ecosystem's tools (admin-tools-mcp, rails-safe-introspection-mcp) each reinvented ad-hoc HookEmitter patterns independently. Hook-ops centralises and generalises this into one tested, auditable library.
