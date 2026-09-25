@@ -58,8 +58,8 @@ concurrency:
   cancel-in-progress: true
 
 # Build and packaging artifacts are excluded so review tokens go to
-# human-authored Ruby and docs only. Gemfile.lock is gitignored and must never
-# appear in a diff anyway; it is listed for defence in depth.
+# human-authored Ruby and docs only. Gemfile.lock is committed for CI
+# reproducibility but is generated, so it is excluded from review.
 env:
   EXCLUDES: 'Gemfile.lock,*.gem,pkg/**,coverage/**,doc/**,.yardoc/**,vendor/**'
 
